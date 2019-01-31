@@ -1,0 +1,57 @@
+version: '3.1'
+
+services:
+    influxsrv:
+        image: influxdb
+        restart: always
+        ports:
+          - "8086:8086"
+        environment:
+          - INFLUXDB_DB=cadvisor3
+  
+    prometheus:
+        image: quay.io/prometheus/prometheus
+        container_name: prometheus
+        hostname: prometheus
+        restart: always
+        volumes:
+            - /data/app/go/src/github.com/liveball/micro-service/monitor/prometheus:/etc/prometheus/
+          
+        ports:
+            - "9090:9090"
+  
+    cadvisor:
+        image: google/cadvisor
+        container_name: cadvisor
+        command: -storage_driver=influxdb -storage_driver_db=cadvisor3 -storage_driver_host=influxsrv:8086
+        ports:
+          - "8080:8080"
+        volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+          - /dev/disk/:/dev/disk:ro
+
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        hostname: grafana
+        restart: always
+        privileged: true
+        ports:
+            - "3000:3000"
+        links:
+            - prometheus:prometheus
+        volumes:
+          - /data/app/go/src/github.com/liveball/micro-service/monitor/grafana/grafana:/var/lib/grafana
+          - /data/app/go/src/github.com/liveball/micro-service/monitor/grafana/etc/:/etc/grafana
+          - /data/app/go/src/github.com/liveball/micro-service/monitor/grafana/log/:/var/log/grafana
+        environment:
+          - GF_SECURITY_ADMIN_PASSWORD=xiaohan
+                #- GF_SECURITY_ADMIN_PASSWORD__FILE=/data/app/go/src/github.com/liveball/micro-service/monitor/grafana/admin_password
+        
+      
+          
+    #docker run -d -p 9090:9090  -v /data/app/go/src/github.com/liveball/micro-service/monitor/prometheus:/etc/prometheus/ --name prometheus quay.io/prometheus/prometheus
+    # sudo docker run --volume=/://data/app/go/src/github.com/liveball/micro-service/monitor/rootfs:ro --volume=/var/run:/var/run:rw  --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --volume=/dev/disk/:/dev/disk:ro --publish=8080:8080 --detach=true --name=cadvisor google/cadvisor:lates

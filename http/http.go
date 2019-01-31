@@ -24,6 +24,7 @@ func Init() {
 	// Create service
 	service := web.NewService(
 		web.Name("go.micro.api.greeter"),
+		web.Address("localhost:8000"),
 	)
 	service.Init()
 	// setup Greeter Server Client

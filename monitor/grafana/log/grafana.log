@@ -1,0 +1,39 @@
+t=2019-01-31T07:21:43+0000 lvl=info msg="Starting Grafana" logger=server version=5.4.3 commit=6539180 branch=HEAD compiled=2019-01-14T14:26:26+0000
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config loaded from" logger=settings file=/usr/share/grafana/conf/defaults.ini
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config overridden from Environment variable" logger=settings var="GF_PATHS_DATA=/var/lib/grafana"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config overridden from Environment variable" logger=settings var="GF_PATHS_LOGS=/var/log/grafana"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config overridden from Environment variable" logger=settings var="GF_PATHS_PLUGINS=/var/lib/grafana/plugins"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config overridden from Environment variable" logger=settings var="GF_PATHS_PROVISIONING=/etc/grafana/provisioning"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Config overridden from Environment variable" logger=settings var="GF_SECURITY_ADMIN_PASSWORD=*********"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Path Home" logger=settings path=/usr/share/grafana
+t=2019-01-31T07:21:43+0000 lvl=info msg="Path Data" logger=settings path=/var/lib/grafana
+t=2019-01-31T07:21:43+0000 lvl=info msg="Path Logs" logger=settings path=/var/log/grafana
+t=2019-01-31T07:21:43+0000 lvl=info msg="Path Plugins" logger=settings path=/var/lib/grafana/plugins
+t=2019-01-31T07:21:43+0000 lvl=info msg="Path Provisioning" logger=settings path=/etc/grafana/provisioning
+t=2019-01-31T07:21:43+0000 lvl=info msg="App mode production" logger=settings
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing HTTPServer" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing SqlStore" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Connecting to DB" logger=sqlstore dbtype=sqlite3
+t=2019-01-31T07:21:43+0000 lvl=info msg="Starting DB migration" logger=migrator
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing SearchService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing RenderingService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing AlertingService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing DatasourceCacheService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing HooksService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing InternalMetricsService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing CleanUpService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing NotificationService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing ProvisioningService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=eror msg="can't read datasource provisioning files from directory" logger=provisioning.datasources path=/etc/grafana/provisioning/datasources
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing PluginManager" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Starting plugin search" logger=plugins
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing TracingService" logger=server
+t=2019-01-31T07:21:43+0000 lvl=info msg="Initializing Stream Manager"
+t=2019-01-31T07:21:43+0000 lvl=info msg="HTTP Server Listen" logger=http.server address=0.0.0.0:3000 protocol=http subUrl= socket=
+t=2019-01-31T07:21:43+0000 lvl=eror msg="Stopped HTTPServer" logger=server reason="listen tcp 0.0.0.0:3000: bind: address already in use"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Stopped Stream Manager"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Stopped AlertingService" logger=server reason="context canceled"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Stopped InternalMetricsService" logger=server reason="context canceled"
+t=2019-01-31T07:21:43+0000 lvl=info msg="Stopped TracingService" logger=server reason=nil
+t=2019-01-31T07:21:43+0000 lvl=info msg="Stopped RenderingService" logger=server reason=nil
+t=2019-01-31T07:21:43+0000 lvl=eror msg="Server shutdown" logger=server reason="listen tcp 0.0.0.0:3000: bind: address already in use"
